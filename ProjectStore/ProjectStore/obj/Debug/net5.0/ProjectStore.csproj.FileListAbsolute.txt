@@ -77,12 +77,3 @@ C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\obj\Debug\net5.0\P
 C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\obj\Debug\net5.0\ref\ProjectStore.dll
 C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\obj\Debug\net5.0\ProjectStore.pdb
 C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\obj\Debug\net5.0\ProjectStore.genruntimeconfig.cache
-C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\bin\Debug\net5.0\EntityFramework.SqlServer.dll
-C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\bin\Debug\net5.0\EntityFramework.dll
-C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\bin\Debug\net5.0\System.CodeDom.dll
-C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\bin\Debug\net5.0\System.Data.SqlClient.dll
-C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\bin\Debug\net5.0\runtimes\win-arm64\native\sni.dll
-C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\bin\Debug\net5.0\runtimes\win-x64\native\sni.dll
-C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\bin\Debug\net5.0\runtimes\win-x86\native\sni.dll
-C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
-C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\bin\Debug\net5.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll

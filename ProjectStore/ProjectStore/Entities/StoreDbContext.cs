@@ -12,7 +12,7 @@ namespace ProjectStore.Entities
 
         //}
 
-        private string _connectionString = "Server=(localdb)\\mssqllocaldb;Database=ProjectStore.ConsoleApp.NewDb;Trusted_Connection=True;";
+        private string _connectionString = "Server=(localdb)\\mssqllocaldb;Database=ProjectStore;Trusted_Connection=True;";
         public DbSet<User> Users { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Address> Addresses { get; set; }

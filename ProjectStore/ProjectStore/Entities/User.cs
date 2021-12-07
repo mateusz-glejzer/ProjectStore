@@ -15,7 +15,7 @@ namespace ProjectStore.Entities
         public DateTime Birthday { get; set; }
         public int PhoneNumber { get; set; }
 
-        public int AddressId { get; set; }
+        
         public virtual Address Address { get; set; }
         public virtual List<Product> Products { get; set; }
 
