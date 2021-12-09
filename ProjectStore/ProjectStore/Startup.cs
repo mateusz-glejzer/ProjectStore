@@ -1,5 +1,5 @@
-
 using ProjectStore.Entities;
+using ProjectStore.Services;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -8,13 +8,15 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Microsoft.EntityFrameworkCore;
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 
+
+using AutoMapper;
 
 namespace ProjectStore
 {
@@ -33,7 +35,9 @@ namespace ProjectStore
             services.AddControllersWithViews();
             services.AddSwaggerGen();
             services.AddDbContext<StoreDbContext>();
-            // services.AddAutoMapper(typeof(Program).Assembly);
+            services.AddAutoMapper(typeof(StoreMappingProfile).Assembly);
+
+            services.AddScoped<IProductService, ProductService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,6 +46,9 @@ namespace ProjectStore
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                app.UseSwagger();
+                app.UseSwaggerUI();
             }
             else
             {
@@ -59,7 +66,7 @@ namespace ProjectStore
             app.UseSwaggerUI(options =>
             {
                 options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
-                options.RoutePrefix = "https://localhost:7244/swagger";
+                options.RoutePrefix = "https://localhost:44378/swagger";
             });
 
             app.UseEndpoints(endpoints =>
@@ -68,6 +75,8 @@ namespace ProjectStore
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+
         }
     }
 }

@@ -17,7 +17,6 @@ namespace ProjectStore.Entities
 
         
         public virtual Address Address { get; set; }
-        public virtual List<Product> Products { get; set; }
-
+       // public virtual List<Product> Products { get; set; }
     }
 }

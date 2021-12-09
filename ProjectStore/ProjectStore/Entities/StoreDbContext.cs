@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProjectStore.Entities;
-
+using ProjectStore.Models;
 
 namespace ProjectStore.Entities
 {
@@ -29,15 +29,13 @@ namespace ProjectStore.Entities
                 .Property(u => u.Email)
                 .IsRequired();
 
-            modelBuilder.Entity<Product>()
-                .Property(p => p.UserId)
-                .IsRequired();
+           //modelBuilder.Entity<Product>()
+           //     .Property(p => p.UserId)
+           //     .IsRequired();
+
             modelBuilder.Entity<Product>()
                 .Property(p => p.Name)
                 .IsRequired();
-
-
-
 
         }
 
