@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "OJ8n3gZBcg6tkPb5gY34wq49gYrdJnL4Jby9u8+3KpkPEVMUwRpCFiDut2eIPA341YBnD+QvWNuviJ9DNLkEzg==",
+  "dgSpecHash": "LdjT49PlxXZg+PUbFXrDsI3BEyodQfwIb3zrMeqCKZ219BVB/rcBu9CC3dbaCPcHnLJTHimOD9/5sZaB79Je4w==",
   "success": true,
   "projectFilePath": "C:\\Users\\papie\\Desktop\\ProjectStore\\ProjectStore\\ProjectStore\\ProjectStore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\papie\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
+    "C:\\Users\\papie\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
     "C:\\Users\\papie\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\papie\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\papie\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",

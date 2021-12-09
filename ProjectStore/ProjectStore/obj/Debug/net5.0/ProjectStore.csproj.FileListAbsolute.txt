@@ -77,3 +77,4 @@ C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\obj\Debug\net5.0\P
 C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\obj\Debug\net5.0\ref\ProjectStore.dll
 C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\obj\Debug\net5.0\ProjectStore.pdb
 C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\obj\Debug\net5.0\ProjectStore.genruntimeconfig.cache
+C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

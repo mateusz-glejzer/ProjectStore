@@ -8,13 +8,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-
+using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-
+using ProjectStore.Services;
 
 namespace ProjectStore
 {
@@ -33,15 +33,19 @@ namespace ProjectStore
             services.AddControllersWithViews();
             services.AddSwaggerGen();
             services.AddDbContext<StoreDbContext>();
-            // services.AddAutoMapper(typeof(Program).Assembly);
+            services.AddAutoMapper(typeof(Program).Assembly);
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<StoreSeeder>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,StoreSeeder seeder)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI();
             }
             else
             {
@@ -51,6 +55,7 @@ namespace ProjectStore
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            seeder.Seed();
 
             app.UseRouting();
 
@@ -59,7 +64,7 @@ namespace ProjectStore
             app.UseSwaggerUI(options =>
             {
                 options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
-                options.RoutePrefix = "https://localhost:7244/swagger";
+                options.RoutePrefix = "https://localhost:5001/swagger";
             });
 
             app.UseEndpoints(endpoints =>
