@@ -15,6 +15,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ProjectStore.Services;
+using Microsoft.AspNetCore.Identity;
 
 namespace ProjectStore
 {
@@ -36,6 +37,7 @@ namespace ProjectStore
             services.AddAutoMapper(typeof(Program).Assembly);
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<StoreSeeder>();
+            services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

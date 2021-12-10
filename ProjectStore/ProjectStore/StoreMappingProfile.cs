@@ -10,7 +10,7 @@ namespace ProjectStore
         public StoreMappingProfile()
         {
             CreateMap<User, UserDto>();
-            CreateMap<User, RegisterUserDto>().ForMember(m=>m.Password,c=>c.MapFrom(d=>d.PasswordHash));
+            CreateMap<RegisterUserDto, User>();
 
         }
     }
