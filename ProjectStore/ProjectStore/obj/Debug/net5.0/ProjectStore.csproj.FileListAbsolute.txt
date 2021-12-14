@@ -26,7 +26,6 @@ C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\bin\Debug\net5.0\M
 C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\bin\Debug\net5.0\Microsoft.OpenApi.dll
-C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\bin\Debug\net5.0\Newtonsoft.Json.dll
 C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -78,3 +77,11 @@ C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\obj\Debug\net5.0\r
 C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\obj\Debug\net5.0\ProjectStore.pdb
 C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\obj\Debug\net5.0\ProjectStore.genruntimeconfig.cache
 C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\bin\Debug\net5.0\nlog.config
+C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\bin\Debug\net5.0\FluentValidation.dll
+C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\bin\Debug\net5.0\FluentValidation.AspNetCore.dll
+C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\bin\Debug\net5.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\bin\Debug\net5.0\NLog.dll
+C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\bin\Debug\net5.0\NLog.Extensions.Logging.dll
+C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\bin\Debug\net5.0\NLog.Web.AspNetCore.dll

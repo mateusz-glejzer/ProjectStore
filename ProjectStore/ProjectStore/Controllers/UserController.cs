@@ -8,16 +8,16 @@ namespace ProjectStore.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly IUserService _accountService;
+        private readonly IUserService _userService;
 
-        public UserController(IUserService accountService)
+        public UserController(IUserService userService)
         {
-            _accountService = accountService;
+            _userService = userService;
         }
         [HttpPost("register")]
         public IActionResult RegisterUser([FromBody]RegisterUserDto dto)
         {
-            _accountService.RegisterUser(dto);
+            _userService.RegisterUser(dto);
             return Ok();
         }
 
@@ -25,8 +25,8 @@ namespace ProjectStore.Controllers
         [HttpPost("login")]
         public IActionResult Login([FromBody] LoginDto dto)
         {
-           // string token = _userService.GenerateJwt(dto);
-            return Ok();
+            string token = _userService.GenerateJwt(dto);
+            return Ok(token);
         }
 
     }
