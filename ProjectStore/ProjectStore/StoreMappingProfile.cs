@@ -11,7 +11,8 @@ namespace ProjectStore
         {
             CreateMap<User, UserDto>();
             CreateMap<RegisterUserDto, User>();
-
+            CreateMap<Product, ProductDto>();
+            CreateMap<ProductDto, Product>();
         }
     }
 }
