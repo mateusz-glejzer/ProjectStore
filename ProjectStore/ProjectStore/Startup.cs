@@ -23,6 +23,8 @@ using FluentValidation.AspNetCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using ProjectStore.Middleware;
+using Microsoft.AspNetCore.Authorization;
+using ProjectStore.Authorization;
 
 namespace ProjectStore
 {
@@ -60,6 +62,7 @@ namespace ProjectStore
                 };
             
             });
+            services.AddScoped<IAuthorizationHandler, ResourceOperationRequirementHandler>();
             services.AddControllersWithViews().AddFluentValidation();
             services.AddSwaggerGen();
             services.AddDbContext<StoreDbContext>();

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProjectStore.Models;
 using ProjectStore.Services;
+using System.Security.Claims;
 
 namespace ProjectStore.Controllers
 {
@@ -21,30 +22,32 @@ namespace ProjectStore.Controllers
 
         // Product CRUD
         [HttpPost]
-        [Route("{controller}/Product/Add")]
+        [Route("Product/Add")]
         public IActionResult ProductAdd(ProductDto product)
         {
-            string message = service.ProductAdd(product);
+            var userId = int.Parse(User.FindFirst(u => u.Type == ClaimTypes.NameIdentifier).Value);
+            
+            string message = service.ProductAdd(product,userId);
             return Created("", message);
         }
         [HttpGet]
-        [Route("{controller}/Product/Get")]
+        [Route("Product/Get")]
         public IActionResult ProductGet()
         {
             return Ok(service.ProductGet());
         }
         [HttpDelete]
-        [Route("{controller}/Product/Delete/{id}")]
+        [Route("Product/Delete/{id}")]
         public IActionResult ProductDelete([FromRoute] int id)
         {
-            string message = service.ProductDelete(id);
+            string message = service.ProductDelete(id,User);
             return Ok(message);
         }
         [HttpPost]
-        [Route("{controller}/Product/Update")]
+        [Route("Product/Update")]
         public IActionResult ProductUpdate(ProductDto product)
         {
-            string message = service.ProductUpdate(product);
+            string message = service.ProductUpdate(product,User);
             return Ok(message);
         }
     }
