@@ -1,9 +1,13 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
+using ProjectStore.Authorization;
 using ProjectStore.Entities;
+using ProjectStore.Exceptions;
 using ProjectStore.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 
 namespace ProjectStore.Services
 {
@@ -11,20 +15,23 @@ namespace ProjectStore.Services
     {
         private readonly StoreDbContext context;
         private readonly IMapper mapper;
+        private readonly IAuthorizationService authorizationService;
 
-        public ProductService(StoreDbContext context, IMapper mapper)
+        public ProductService(StoreDbContext context, IMapper mapper, IAuthorizationService authorizationService)
         {
             this.context = context;
             this.mapper = mapper;
+            this.authorizationService = authorizationService;
         }
 
-        public string ProductAdd(ProductDto productDto)
+        public string ProductAdd(ProductDto productDto,int userId )
         {
             using var transaction = context.Database.BeginTransaction();
 
             try
             {
                 Product product = mapper.Map<Product>(productDto);
+                product.CreatedByUserId = userId;
                 context.Products.Add(product);
                 context.SaveChanges();
                 transaction.Commit();
@@ -37,13 +44,18 @@ namespace ProjectStore.Services
             }
         }
 
-        public string ProductDelete(int id)
+        public string ProductDelete(int id,ClaimsPrincipal user)
         {
             using var transaction = context.Database.BeginTransaction();
 
             try
             {
                 Product product = context.Products.Find(id);
+                var authorizationResult = authorizationService.AuthorizeAsync(user, product, new ResourceOperationRequirement(ResourceOperation.Delete)).Result;
+                if (!authorizationResult.Succeeded)
+                {
+                    throw new ForbidException();
+                }
                 context.Products.Remove(product);
                 context.SaveChanges();
                 transaction.Commit();
@@ -73,13 +85,18 @@ namespace ProjectStore.Services
             }
         }
 
-        public string ProductUpdate(ProductDto productDto)
+        public string ProductUpdate(ProductDto productDto,ClaimsPrincipal user)
         {
             using var transaction = context.Database.BeginTransaction();
 
             try
             {
                 Product product = mapper.Map<Product>(productDto);
+                var authorizationResult =authorizationService.AuthorizeAsync(user, product, new ResourceOperationRequirement(ResourceOperation.Update)).Result;
+                if (!authorizationResult.Succeeded) 
+                {
+                    throw new ForbidException();
+                }
                 context.Products.Update(product);
                 context.SaveChanges();
                 transaction.Commit();
