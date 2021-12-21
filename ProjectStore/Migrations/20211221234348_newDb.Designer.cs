@@ -10,8 +10,8 @@ using ProjectStore.Entities;
 namespace ProjectStore.Migrations
 {
     [DbContext(typeof(StoreDbContext))]
-    [Migration("20211216185449_ProductUserIdAdd")]
-    partial class ProductUserIdAdd
+    [Migration("20211221234348_newDb")]
+    partial class newDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -76,6 +76,9 @@ namespace ProjectStore.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
@@ -104,7 +107,7 @@ namespace ProjectStore.Migrations
 
             modelBuilder.Entity("ProjectStore.Entities.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -136,7 +139,7 @@ namespace ProjectStore.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.HasKey("Id");
+                    b.HasKey("UserId");
 
                     b.HasIndex("RoleId");
 
