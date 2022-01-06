@@ -8,7 +8,7 @@ namespace ProjectStore.Services
     {
         string ProductAdd(ProductDto product,int userId);
         string ProductDelete(int id, ClaimsPrincipal user);
-        string ProductUpdate(ProductDto product, ClaimsPrincipal user);
+        string ProductUpdate(int ProductId, ProductDto product, ClaimsPrincipal user);
         List<ProductDto> ProductGet();
     }
 }

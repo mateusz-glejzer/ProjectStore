@@ -45,9 +45,9 @@ namespace ProjectStore.Controllers
         }
         [HttpPost]
         [Route("Product/Update")]
-        public IActionResult ProductUpdate(ProductDto product)
+        public IActionResult ProductUpdate(int productId,ProductDto product)
         {
-            string message = service.ProductUpdate(product,User);
+            string message = service.ProductUpdate(productId,product, User);
             return Ok(message);
         }
     }

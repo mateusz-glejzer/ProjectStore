@@ -54,7 +54,7 @@ namespace ProjectStore.Services
                 var authorizationResult = authorizationService.AuthorizeAsync(user, product, new ResourceOperationRequirement(ResourceOperation.Delete)).Result;
                 if (!authorizationResult.Succeeded)
                 {
-                    throw new ForbidException();
+                    throw new ForbidException("access denied");
                 }
                 context.Products.Remove(product);
                 context.SaveChanges();
@@ -85,22 +85,35 @@ namespace ProjectStore.Services
             }
         }
 
-        public string ProductUpdate(ProductDto productDto,ClaimsPrincipal user)
+        public string ProductUpdate(int ProductId,ProductDto productDto,ClaimsPrincipal user)
         {
             using var transaction = context.Database.BeginTransaction();
 
             try
             {
-                Product product = mapper.Map<Product>(productDto);
-                var authorizationResult =authorizationService.AuthorizeAsync(user, product, new ResourceOperationRequirement(ResourceOperation.Update)).Result;
+                var productInDb = context
+                    .Products
+                    .FirstOrDefault(p => p.Id == ProductId);
+                if (productInDb is null) 
+                {
+                    throw new NotFoundException("Restaurant not found");
+                }
+
+               // Product product = mapper.Map<Product>(productDto);
+                var authorizationResult =authorizationService.AuthorizeAsync(user, productInDb, new ResourceOperationRequirement(ResourceOperation.Update)).Result;
                 if (!authorizationResult.Succeeded) 
                 {
-                    throw new ForbidException();
+                    throw new ForbidException("access denied");
                 }
-                context.Products.Update(product);
+                productInDb.Name=productDto.Name;
+                productInDb.Description=productDto.Description;
+                productInDb.Image=productDto.Image;
+                productInDb.Price=productDto.Price;
+
+                context.Products.Update(productInDb);
                 context.SaveChanges();
                 transaction.Commit();
-                return $"Product {product.Name} updated";
+                return $"Product {productInDb.Name} updated";
             }
             catch (Exception ex)
             {
