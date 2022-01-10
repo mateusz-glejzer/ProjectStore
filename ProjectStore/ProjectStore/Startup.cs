@@ -25,6 +25,7 @@ using System.Text;
 using ProjectStore.Middleware;
 using Microsoft.AspNetCore.Authorization;
 using ProjectStore.Authorization;
+using MediatR;
 
 namespace ProjectStore
 {
@@ -73,6 +74,7 @@ namespace ProjectStore
             services.AddScoped<IValidator<RegisterUserDto>, RegisterUserValidator>();
             services.AddScoped<ErrorHandlingMiddleware>();
             services.AddScoped<IProductService, ProductService>();
+            services.AddMediatR(typeof(Startup).Assembly);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

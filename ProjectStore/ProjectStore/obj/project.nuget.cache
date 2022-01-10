@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "rmE3IKAZs4OAai8B5scT13zW/5/YT53IRd56414Zqjkthq+j6Lql//UIrrxHtRtpD1HfstiaNF58BuJev/QLpA==",
+  "dgSpecHash": "/Ypkj9JkrO34c2Nn1I5joDtigjtpkPe74CK4Srg60EFJ8SQPdttUFr8MSzLhgcLZq1dzXva0rUMbhYrrpUJ+Sw==",
   "success": true,
   "projectFilePath": "C:\\Users\\papie\\Desktop\\ProjectStore\\ProjectStore\\ProjectStore\\ProjectStore.csproj",
   "expectedPackageFiles": [
@@ -10,6 +10,9 @@
     "C:\\Users\\papie\\.nuget\\packages\\fluentvalidation.aspnetcore\\10.3.5\\fluentvalidation.aspnetcore.10.3.5.nupkg.sha512",
     "C:\\Users\\papie\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\10.3.5\\fluentvalidation.dependencyinjectionextensions.10.3.5.nupkg.sha512",
     "C:\\Users\\papie\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\papie\\.nuget\\packages\\mediatr\\10.0.0\\mediatr.10.0.0.nupkg.sha512",
+    "C:\\Users\\papie\\.nuget\\packages\\mediatr.contracts\\1.0.0\\mediatr.contracts.1.0.0.nupkg.sha512",
+    "C:\\Users\\papie\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\10.0.0\\mediatr.extensions.microsoft.dependencyinjection.10.0.0.nupkg.sha512",
     "C:\\Users\\papie\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.12\\microsoft.aspnetcore.authentication.jwtbearer.5.0.12.nupkg.sha512",
     "C:\\Users\\papie\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\papie\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",

@@ -2,16 +2,23 @@
 using ProjectStore.Models;
 using ProjectStore.Services;
 using System.Security.Claims;
+using MediatR;
+using ProjectStore.Queries;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using ProjectStore.Commands;
 
 namespace ProjectStore.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly IProductService service;
+        
+        private readonly IMediator mediator;
 
-        public ProductController(IProductService service)
+        public ProductController(IMediator mediator)
         {
-            this.service = service;
+            
+            this.mediator = mediator;
         }
 
         public IActionResult Index()
@@ -23,32 +30,32 @@ namespace ProjectStore.Controllers
         // Product CRUD
         [HttpPost]
         [Route("Product/Add")]
-        public IActionResult ProductAdd(ProductDto product)
+        public async Task<string> ProductAdd(ProductDto product)
         {
             var userId = int.Parse(User.FindFirst(u => u.Type == ClaimTypes.NameIdentifier).Value);
             
-            string message = service.ProductAdd(product,userId);
-            return Created("", message);
+            return await mediator.Send(new AddProductCommand(product,userId));
+            
         }
         [HttpGet]
         [Route("Product/Get")]
-        public IActionResult ProductGet()
+        public async Task<List<ProductDto>> ProductGet()
         {
-            return Ok(service.ProductGet());
+            return await mediator.Send(new GetProductListQuery());
         }
         [HttpDelete]
         [Route("Product/Delete/{id}")]
-        public IActionResult ProductDelete([FromRoute] int id)
+        public async Task<string> ProductDelete([FromRoute] int id)
         {
-            string message = service.ProductDelete(id,User);
-            return Ok(message);
+        
+            return await mediator.Send(new DeleteProductCommand(id,User));
         }
         [HttpPost]
         [Route("Product/Update")]
-        public IActionResult ProductUpdate(int productId,ProductDto product)
+        public async Task<string> ProductUpdate(int productId,ProductDto product)
         {
-            string message = service.ProductUpdate(productId,product, User);
-            return Ok(message);
+            
+            return await mediator.Send(new UpdateProductCommand( productId, product,User));
         }
     }
 }

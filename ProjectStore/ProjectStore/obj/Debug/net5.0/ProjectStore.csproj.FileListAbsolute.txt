@@ -85,3 +85,6 @@ C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\bin\Debug\net5.0\M
 C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\bin\Debug\net5.0\NLog.dll
 C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\bin\Debug\net5.0\NLog.Extensions.Logging.dll
 C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\bin\Debug\net5.0\NLog.Web.AspNetCore.dll
+C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\bin\Debug\net5.0\MediatR.dll
+C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\bin\Debug\net5.0\MediatR.Contracts.dll
+C:\Users\papie\Desktop\ProjectStore\ProjectStore\ProjectStore\bin\Debug\net5.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
