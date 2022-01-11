@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using ProjectStore.Models;
 using ProjectStore.Services;
+using System.Threading.Tasks;
+using ProjectStore.Commands;
 
 namespace ProjectStore.Controllers
 {
@@ -8,25 +11,24 @@ namespace ProjectStore.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly IUserService _userService;
+        private readonly IMediator _mediator;
 
-        public UserController(IUserService userService)
+        public UserController(IMediator mediator)
         {
-            _userService = userService;
+            _mediator=mediator;
         }
         [HttpPost("register")]
-        public IActionResult RegisterUser([FromBody]RegisterUserDto dto)
-        {
-            _userService.RegisterUser(dto);
-            return Ok();
+        public async Task RegisterUser([FromBody]RegisterUserDto dto)
+        {            
+           await _mediator.Send(new RegisterUserCommand(dto));
         }
 
 
         [HttpPost("login")]
-        public IActionResult Login([FromBody] LoginDto dto)
+        public async Task<string> Login([FromBody] LoginDto dto)
         {
-            string token = _userService.GenerateJwt(dto);
-            return Ok(token);
+            
+            return await _mediator.Send(new LoginUserCommand(dto));
         }
 
     }

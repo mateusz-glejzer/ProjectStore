@@ -12,7 +12,9 @@ namespace ProjectStore.Entities
         public int CreatedByUserId { get; set; }
         public decimal Price { get; set; }
 
-       // public virtual int UserId { get; set; }
+        public byte[] Image { get; set; }
+
+        // public virtual int UserId { get; set; }
         public virtual User User { get; set; }
     }
 }

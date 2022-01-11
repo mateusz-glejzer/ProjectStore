@@ -67,6 +67,9 @@ namespace ProjectStore.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<byte[]>("Image")
+                        .HasColumnType("varbinary(max)");
+
                     b.Property<bool>("IsAvailable")
                         .HasColumnType("bit");
 
