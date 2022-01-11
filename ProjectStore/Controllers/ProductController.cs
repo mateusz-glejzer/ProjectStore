@@ -20,7 +20,7 @@ namespace ProjectStore.Controllers
             
             this.mediator = mediator;
         }
-
+        
         public IActionResult Index()
         {
             return View();

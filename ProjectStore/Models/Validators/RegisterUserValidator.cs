@@ -19,9 +19,11 @@ namespace ProjectStore.Models.Validators
             RuleFor(x => x.Email).Custom((value, context) =>
             {
                 var emailInUse = dbContext.Users.Any(u => u.Email == value);
-                if (emailInUse) 
+                var userNameInUse = dbContext.Users.Any(u => u.Username == value);
+                var validate = emailInUse && userNameInUse;
+                if (validate) 
                 {
-                    context.AddFailure("Email", "Email is taken");
+                    context.AddFailure("Email or Username", "Email or Username is taken");
                 }
             });
             
