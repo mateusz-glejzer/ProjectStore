@@ -18,17 +18,17 @@ namespace ProjectStore.Controllers
             _mediator=mediator;
         }
         [HttpPost("register")]
-        public async Task RegisterUser([FromBody]RegisterUserDto dto)
+        public async Task<IActionResult> RegisterUser([FromBody]RegisterUserDto dto)
         {            
-           await _mediator.Send(new RegisterUserCommand(dto));
+          return Ok(await _mediator.Send(new RegisterUserCommand(dto)));
         }
 
 
         [HttpPost("login")]
-        public async Task<string> Login([FromBody] LoginDto dto)
+        public async Task<IActionResult> Login([FromBody] LoginDto dto)
         {
             
-            return await _mediator.Send(new LoginUserCommand(dto));
+            return Ok(await _mediator.Send(new LoginUserCommand(dto)));
         }
 
     }

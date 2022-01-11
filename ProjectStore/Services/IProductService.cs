@@ -6,9 +6,9 @@ namespace ProjectStore.Services
 {
     public interface IProductService
     {
-        string ProductAdd(ProductDto product,int userId);
+        string ProductAdd(ProductDto productDto, int userId);
         string ProductDelete(int id, ClaimsPrincipal user);
-        string ProductUpdate(int ProductId, ProductDto product, ClaimsPrincipal user);
         List<ProductDto> ProductGet();
+        string ProductUpdate(int ProductId, ProductDto productDto, ClaimsPrincipal user);
     }
 }

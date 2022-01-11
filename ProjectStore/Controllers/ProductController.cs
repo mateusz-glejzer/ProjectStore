@@ -30,32 +30,32 @@ namespace ProjectStore.Controllers
         // Product CRUD
         [HttpPost]
         [Route("Product/Add")]
-        public async Task<string> ProductAdd(ProductDto product)
+        public async Task<IActionResult> ProductAdd(ProductDto product)
         {
             var userId = int.Parse(User.FindFirst(u => u.Type == ClaimTypes.NameIdentifier).Value);
             
-            return await mediator.Send(new AddProductCommand(product,userId));
+            return Created(await mediator.Send(new AddProductCommand(product,userId)),null);
             
         }
         [HttpGet]
         [Route("Product/Get")]
-        public async Task<List<ProductDto>> ProductGet()
+        public async Task<IActionResult> ProductGet()
         {
-            return await mediator.Send(new GetProductListQuery());
+            return Ok(await mediator.Send(new GetProductListQuery()));
         }
         [HttpDelete]
         [Route("Product/Delete/{id}")]
-        public async Task<string> ProductDelete([FromRoute] int id)
+        public async Task<IActionResult> ProductDelete([FromRoute] int id)
         {
         
-            return await mediator.Send(new DeleteProductCommand(id,User));
+            return Ok(await mediator.Send(new DeleteProductCommand(id,User)));
         }
         [HttpPost]
         [Route("Product/Update")]
-        public async Task<string> ProductUpdate(int productId,ProductDto product)
+        public async Task<IActionResult> ProductUpdate(int productId,ProductDto product)
         {
             
-            return await mediator.Send(new UpdateProductCommand( productId, product,User));
+            return Ok(await mediator.Send(new UpdateProductCommand( productId, product,User)));
         }
     }
 }

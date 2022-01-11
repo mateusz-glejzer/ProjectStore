@@ -24,7 +24,7 @@ namespace ProjectStore.Services
             this.authorizationService = authorizationService;
         }
 
-        public string ProductAdd(ProductDto productDto,int userId )
+        public string ProductAdd(ProductDto productDto, int userId)
         {
             using var transaction = context.Database.BeginTransaction();
 
@@ -44,7 +44,7 @@ namespace ProjectStore.Services
             }
         }
 
-        public string ProductDelete(int id,ClaimsPrincipal user)
+        public string ProductDelete(int id, ClaimsPrincipal user)
         {
             using var transaction = context.Database.BeginTransaction();
 
@@ -85,7 +85,7 @@ namespace ProjectStore.Services
             }
         }
 
-        public string ProductUpdate(int ProductId,ProductDto productDto,ClaimsPrincipal user)
+        public string ProductUpdate(int ProductId, ProductDto productDto, ClaimsPrincipal user)
         {
             using var transaction = context.Database.BeginTransaction();
 
@@ -94,21 +94,21 @@ namespace ProjectStore.Services
                 var productInDb = context
                     .Products
                     .FirstOrDefault(p => p.Id == ProductId);
-                if (productInDb is null) 
+                if (productInDb is null)
                 {
                     throw new NotFoundException("Restaurant not found");
                 }
 
-               // Product product = mapper.Map<Product>(productDto);
-                var authorizationResult =authorizationService.AuthorizeAsync(user, productInDb, new ResourceOperationRequirement(ResourceOperation.Update)).Result;
-                if (!authorizationResult.Succeeded) 
+                // Product product = mapper.Map<Product>(productDto);
+                var authorizationResult = authorizationService.AuthorizeAsync(user, productInDb, new ResourceOperationRequirement(ResourceOperation.Update)).Result;
+                if (!authorizationResult.Succeeded)
                 {
                     throw new ForbidException("access denied");
                 }
-                productInDb.Name=productDto.Name;
-                productInDb.Description=productDto.Description;
-                productInDb.Image=productDto.Image;
-                productInDb.Price=productDto.Price;
+                productInDb.Name = productDto.Name;
+                productInDb.Description = productDto.Description;
+                productInDb.Image = productDto.Image;
+                productInDb.Price = productDto.Price;
 
                 context.Products.Update(productInDb);
                 context.SaveChanges();
