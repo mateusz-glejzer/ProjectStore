@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectStore.Handlers
 {
-    public class UpdateProductHandler : IRequestHandler<UpdateProductCommand, string>
+    public class UpdateProductHandler : IRequestHandler<UpdateProductCommand, Unit>
     {
         public IProductService _service { get; }
         public UpdateProductHandler(IProductService service)
@@ -14,9 +14,10 @@ namespace ProjectStore.Handlers
             _service = service;
         }
 
-        public Task<string> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
+        public Task<Unit> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
         {
-            return Task.FromResult(_service.ProductUpdate(request.ProductId,request.productDto,request.user));
+            _service.ProductUpdate(request.ProductId, request.productDto, request.user);
+            return Task.FromResult(Unit.Value);
         }
     }
 }

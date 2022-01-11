@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectStore.Handlers
 {
-    public class DeleteProductHandler : IRequestHandler<DeleteProductCommand,string>
+    public class DeleteProductHandler : IRequestHandler<DeleteProductCommand,Unit>
     {
         private IProductService _service { get; }
         public DeleteProductHandler(IProductService service)
@@ -14,9 +14,10 @@ namespace ProjectStore.Handlers
             _service = service;
         }
 
-        Task<string> IRequestHandler<DeleteProductCommand, string>.Handle(DeleteProductCommand request, CancellationToken cancellationToken)
+        Task<Unit> IRequestHandler<DeleteProductCommand, Unit>.Handle(DeleteProductCommand request, CancellationToken cancellationToken)
         {
-            return Task.FromResult(_service.ProductDelete(request.id, request.user));
+            _service.ProductDelete(request.id, request.user);
+            return Task.FromResult(Unit.Value);
         }
     }
 }

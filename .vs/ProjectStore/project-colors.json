@@ -5,7 +5,12 @@
       "ProjectGuid": "9c3a76de-1f0c-45bd-b470-05b0afb6a776",
       "DisplayName": "ProjectStore",
       "ColorIndex": 0
+    },
+    "bf7a0e1c-a14a-4a49-bf27-2bdd302bbeb2": {
+      "ProjectGuid": "bf7a0e1c-a14a-4a49-bf27-2bdd302bbeb2",
+      "DisplayName": "ProjectStoreTests",
+      "ColorIndex": 1
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 2
 }

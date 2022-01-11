@@ -4,7 +4,7 @@ using System.Security.Claims;
 
 namespace ProjectStore.Commands
 {
-    public record UpdateProductCommand(int ProductId, ProductDto productDto, ClaimsPrincipal user):IRequest<string>;
+    public record UpdateProductCommand(int ProductId, ProductDto productDto, ClaimsPrincipal user):IRequest;
     
     
 }
