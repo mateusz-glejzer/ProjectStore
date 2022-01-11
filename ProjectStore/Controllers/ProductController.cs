@@ -33,8 +33,8 @@ namespace ProjectStore.Controllers
         public async Task<IActionResult> ProductAdd(ProductDto product)
         {
             var userId = int.Parse(User.FindFirst(u => u.Type == ClaimTypes.NameIdentifier).Value);
-            
-            return Created(await mediator.Send(new AddProductCommand(product,userId)),null);
+            await mediator.Send(new AddProductCommand(product, userId));
+            return Ok();
             
         }
         [HttpGet]
