@@ -24,7 +24,7 @@ namespace ProjectStore.Services
             this.authorizationService = authorizationService;
         }
 
-        public string ProductAdd(ProductDto productDto, int userId)
+        public void ProductAdd(ProductDto productDto, int userId)
         {
             using var transaction = context.Database.BeginTransaction();
 
@@ -35,12 +35,12 @@ namespace ProjectStore.Services
                 context.Products.Add(product);
                 context.SaveChanges();
                 transaction.Commit();
-                return $"Product {product.Name} added";
+                //return $"Product {product.Name} added";
             }
             catch (Exception ex)
             {
                 transaction.Rollback();
-                return $"Error: {ex.Message}";
+                //return $"Error: {ex.Message}";
             }
         }
 
@@ -84,6 +84,22 @@ namespace ProjectStore.Services
                 return null;
             }
         }
+        public ProductDto ProductGetById()
+        {
+            using var transaction = context.Database.BeginTransaction();
+
+            try
+            {
+                ProductDto product = mapper.Map<ProductDto>(context.Products);
+
+                return product;
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                return null;
+            }
+        }
 
         public string ProductUpdate(int ProductId, ProductDto productDto, ClaimsPrincipal user)
         {
@@ -96,7 +112,7 @@ namespace ProjectStore.Services
                     .FirstOrDefault(p => p.Id == ProductId);
                 if (productInDb is null)
                 {
-                    throw new NotFoundException("Restaurant not found");
+                    throw new NotFoundException("Product not found");
                 }
 
                 // Product product = mapper.Map<Product>(productDto);
