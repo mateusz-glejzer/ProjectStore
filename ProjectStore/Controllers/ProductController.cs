@@ -43,6 +43,12 @@ namespace ProjectStore.Controllers
         {
             return Ok(await mediator.Send(new GetProductListQuery()));
         }
+        [HttpGet]
+        [Route("Product/Get/{id}")]
+        public async Task<IActionResult> ProductGetById()
+        {
+            return Ok(await mediator.Send(new GetProductByIdQuery()));
+        }
         [HttpDelete]
         [Route("Product/Delete/{id}")]
         public async Task<IActionResult> ProductDelete([FromRoute] int id)
