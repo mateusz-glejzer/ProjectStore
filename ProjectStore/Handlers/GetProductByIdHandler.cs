@@ -21,7 +21,7 @@ namespace ProjectStore.Handlers
     
         public  Task<ProductDto> Handle(GetProductByIdQuery request, CancellationToken cancellationToken)
         {
-            return Task.FromResult(_service.ProductGetById());
+            return Task.FromResult(_service.ProductGetById(request.id));
         }
     }
 }
