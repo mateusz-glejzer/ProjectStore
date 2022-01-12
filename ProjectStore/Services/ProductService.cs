@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
 using ProjectStore.Authorization;
 using ProjectStore.Entities;
 using ProjectStore.Exceptions;
@@ -8,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace ProjectStore.Services
 {
@@ -84,13 +86,14 @@ namespace ProjectStore.Services
                 return null;
             }
         }
-        public ProductDto ProductGetById()
+        public  ProductDto ProductGetById(int id)
         {
             using var transaction = context.Database.BeginTransaction();
 
             try
             {
-                ProductDto product = mapper.Map<ProductDto>(context.Products);
+                Product entity = context.Products.FirstOrDefault(x => x.Id == id);
+                ProductDto product = mapper.Map<ProductDto>(entity); 
 
                 return product;
             }
