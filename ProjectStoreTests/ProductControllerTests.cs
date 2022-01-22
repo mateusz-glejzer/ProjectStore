@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using ProjectStore;
 using ProjectStore.Entities;
 using ProjectStore.Models;
+using ProjectStoreBlazorTests;
 using System;
 using System.Linq;
 using System.Net.Http;
@@ -14,7 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace ProjectStoreBlazorTests
+namespace ProjectStoreTests
 {
     public class ProductControllerTests : IClassFixture<WebApplicationFactory<Startup>>
     {
@@ -77,7 +78,7 @@ namespace ProjectStoreBlazorTests
             //act
             var response = await _client.DeleteAsync($"Product/Delete/{productId}");
             //assert
-            response.StatusCode.Should().Be(System.Net.HttpStatusCode.BadRequest);
+            response.StatusCode.Should().Be(System.Net.HttpStatusCode.NoContent);
            
         }
         [Fact]
@@ -96,7 +97,7 @@ namespace ProjectStoreBlazorTests
             var response = await _client.DeleteAsync($"Product/Delete/{product.CreatedByUserId}");
 
             //assert
-            response.StatusCode.Should().Be(System.Net.HttpStatusCode.OK);
+            response.StatusCode.Should().Be(System.Net.HttpStatusCode.NoContent);
 
 
         }

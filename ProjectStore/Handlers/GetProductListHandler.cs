@@ -18,10 +18,10 @@ namespace ProjectStore.Handlers
             _service = service;
         }
 
-        
+
         public Task<List<ProductDto>> Handle(GetProductListQuery request, CancellationToken cancellationToken)
         {
-            return Task.FromResult(_service.ProductGet());
+            return _service.ProductGet();
         }
     }
 }
