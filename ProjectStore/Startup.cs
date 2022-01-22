@@ -66,7 +66,7 @@ namespace ProjectStore
             services.AddScoped<IAuthorizationHandler, ResourceOperationRequirementHandler>();
             services.AddControllersWithViews().AddFluentValidation();
             services.AddSwaggerGen();
-            services.AddDbContext<StoreDbContext>();
+            services.AddDbContext<StoreDbContext>(options=>options.UseSqlServer(Configuration.GetConnectionString("ProjectStoreDbConnection")));
             services.AddAutoMapper(typeof(Program).Assembly);
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<StoreSeeder>();

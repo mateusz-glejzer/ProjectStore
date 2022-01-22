@@ -10,58 +10,50 @@ using ProjectStore.Commands;
 
 namespace ProjectStore.Controllers
 {
+    [ApiController]
+    [Route("api/product")]
     public class ProductController : Controller
     {
-        
+
         private readonly IMediator mediator;
 
         public ProductController(IMediator mediator)
         {
-            
+
             this.mediator = mediator;
         }
-        
-        public IActionResult Index()
-        {
-            return View();
-        }
 
-
-        // Product CRUD
         [HttpPost]
-        [Route("Product/Add")]
         public async Task<IActionResult> ProductAdd(ProductDto product)
         {
             var userId = int.Parse(User.FindFirst(u => u.Type == ClaimTypes.NameIdentifier).Value);
             await mediator.Send(new AddProductCommand(product, userId));
             return Ok();
-            
+
         }
         [HttpGet]
-        [Route("Product/Get")]
         public async Task<IActionResult> ProductGet()
         {
-            return Ok(await mediator.Send(new GetProductListQuery()));
+            await mediator.Send(new GetProductListQuery());
+            return Ok();
         }
-        [HttpGet]
-        [Route("Product/Get/{id}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> ProductGetById(int id)
         {
-            return Ok(await mediator.Send(new GetProductByIdQuery(id)));
+            await mediator.Send(new GetProductByIdQuery(id));
+            return Ok();
         }
-        [HttpDelete]
-        [Route("Product/Delete/{id}")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> ProductDelete([FromRoute] int id)
         {
-        
-            return Ok(await mediator.Send(new DeleteProductCommand(id,User)));
+            await mediator.Send(new DeleteProductCommand(id, User));
+            return NoContent();
         }
-        [HttpPost]
-        [Route("Product/Update")]
+        [HttpPut]
         public async Task<IActionResult> ProductUpdate(int productId,ProductDto product)
         {
-            
-            return Ok(await mediator.Send(new UpdateProductCommand( productId, product,User)));
+            await mediator.Send(new UpdateProductCommand(productId, product, User));
+            return Ok();
         }
     }
 }
