@@ -1,1 +1,1 @@
-# ProjectStore by Mateusz Glejzer and Tomasz Banaś
+# ProjectStore by Mateusz Glejzer
