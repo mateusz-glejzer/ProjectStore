@@ -65,7 +65,7 @@ namespace ProjectStoreTests
             var json = JsonConvert.SerializeObject(model);
             var httpContent = new StringContent(json, UnicodeEncoding.UTF8, "application/json");
             //act
-            var response = await _client.PostAsync("Product/Add", httpContent);
+            var response = await _client.PostAsync("/api/product", httpContent);
             //assert
             response.StatusCode.Should().Be(System.Net.HttpStatusCode.OK);
             
@@ -76,7 +76,7 @@ namespace ProjectStoreTests
         {   //arange
             var productId = 997;
             //act
-            var response = await _client.DeleteAsync($"Product/Delete/{productId}");
+            var response = await _client.DeleteAsync($"api/product/{productId}");
             //assert
             response.StatusCode.Should().Be(System.Net.HttpStatusCode.NoContent);
            
@@ -94,7 +94,7 @@ namespace ProjectStoreTests
             //seed
             Seed(product);
             //act
-            var response = await _client.DeleteAsync($"Product/Delete/{product.CreatedByUserId}");
+            var response = await _client.DeleteAsync($"/api/product/{product.CreatedByUserId}");
 
             //assert
             response.StatusCode.Should().Be(System.Net.HttpStatusCode.NoContent);
@@ -120,7 +120,7 @@ namespace ProjectStoreTests
 
             Seed(product);
             //act
-            var response = await _client.GetAsync($"Product/Get/{1}");
+            var response = await _client.GetAsync($"/api/product/{1}");
            
 
             //assert
