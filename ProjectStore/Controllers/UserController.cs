@@ -7,7 +7,7 @@ using ProjectStore.Commands;
 
 namespace ProjectStore.Controllers
 {
-    [Route("user")] 
+    [Route("api/user")] 
     [ApiController]
     public class UserController : ControllerBase
     {
