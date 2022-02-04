@@ -105,8 +105,10 @@ namespace ProjectStore.Services
                 productInDb.Description = productDto.Description;
             if (productDto.Image != null)
                 productInDb.Image = productDto.Image;
-            if (productDto.Price != null)
+            
+
                 productInDb.Price = productDto.Price;
+                productInDb.IsAvailable = productDto.IsAvailable;
 
             context.Products.Update(productInDb);
             context.SaveChanges();
