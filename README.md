@@ -1,6 +1,6 @@
 # ProjectStore Api
-(STILL UNDER CONSTRUCTION ;))
-Api for a group project ProjectStore.
+## (STILL UNDER CONSTRUCTION ;))
+- Api for a group project ProjectStore.
 At first this project used to be a MVC app but later my collegue made a Blazor app, so we used existing backend for a Blazor server-side with minor changes. My friend's client-side and mine server-side combined can be found here => https://github.com/MountainCat1/ProjectStoreBlazor
 
 ## Features:
