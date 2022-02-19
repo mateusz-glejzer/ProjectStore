@@ -26,6 +26,7 @@ using ProjectStore.Middleware;
 using Microsoft.AspNetCore.Authorization;
 using ProjectStore.Authorization;
 using MediatR;
+using StackExchange.Redis;
 
 namespace ProjectStore
 {
@@ -75,6 +76,8 @@ namespace ProjectStore
             services.AddScoped<ErrorHandlingMiddleware>();
             services.AddScoped<IProductService, ProductService>();
             services.AddMediatR(typeof(Startup).Assembly);
+            services.AddSingleton<IConnectionMultiplexer>(x => ConnectionMultiplexer.Connect(Configuration.GetValue<string>("RedisConnection")));
+            services.AddScoped<ICachceService, RedisCacheService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -86,12 +89,7 @@ namespace ProjectStore
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
+          
             app.UseMiddleware<ErrorHandlingMiddleware>();
             app.UseAuthentication();
             
@@ -106,14 +104,12 @@ namespace ProjectStore
             app.UseSwaggerUI(options =>
             {
                 options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
-                options.RoutePrefix = "https://localhost:5001/swagger";
+                options.RoutePrefix = "https://localhost:44378/swagger";
             });
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllers();
             });
         }
     }

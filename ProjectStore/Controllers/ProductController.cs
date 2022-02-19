@@ -12,7 +12,7 @@ namespace ProjectStore.Controllers
 {
     [ApiController]
     [Route("api/product")]
-    public class ProductController : Controller
+    public class ProductController : ControllerBase
     {
 
         private readonly IMediator mediator;
