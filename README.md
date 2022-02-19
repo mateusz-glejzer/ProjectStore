@@ -22,6 +22,7 @@ At first this project used to be a MVC app but later my collegue made a Blazor a
 - XUnit tests with FluentAssertions and Moq
 
 ## Future plans:
+- !--Now-- adding basket functionality!
 - Learn Angular and combine! //TO DO
 - Implement microservices after learning them! //TO DO
 - Make a version with DDD architecture after figuring it out! //TO DO
